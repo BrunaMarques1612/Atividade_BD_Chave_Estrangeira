@@ -1,0 +1,30 @@
+drop table contratadas;
+create table contratadas(
+	id serial PRIMARY KEY,
+	razaosocial varchar (200) not null,
+	numfunc int);
+
+drop table produto;
+create table produto(
+	id serial PRIMARY KEY,
+	nome varchar (100),
+	idempresa int,
+	preco real
+	);
+	
+	-- relacionamentos
+	ALTER TABLE produto 
+	add constraint fkempresaTemQueExistir 
+	FOREIGN KEY (idempresa) 
+	REFERENCES contratadas (id);
+	
+	
+	--inserts
+	insert into contratadas (razaosocial, numfunc) values ('Ferrari',1000);
+	insert into contratadas (razaosocial, numfunc) values ('Extra',300);
+	select * from contratadas;
+	insert into produto (nome,idempresa) values ('carros',5);
+	select * from produto;
+	
+	
+	
